@@ -1,0 +1,2 @@
+#!/bin/bash
+adb shell CLASSPATH=/data/local/tmp/cvc.jar app_process / com.rom1v.checkvideocodecs.Main
