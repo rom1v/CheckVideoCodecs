@@ -37,10 +37,22 @@ public class Main {
             MediaCodecInfo.CodecCapabilities capabilities = codecInfo.getCapabilitiesForType("video/avc");
             MediaCodecInfo.VideoCapabilities videoCapabilities = capabilities.getVideoCapabilities();
             System.out.println("video/avc capabilities:");
+            System.out.println("    default format: " + capabilities.getDefaultFormat());
+            System.out.println("    profile levels: " + getProfileLevelsAsString(capabilities.profileLevels));
+            System.out.println("    color formats: " + Arrays.toString(capabilities.colorFormats));
             System.out.println("    bitrate: " + videoCapabilities.getBitrateRange());
             System.out.println("    framerate: " + videoCapabilities.getSupportedFrameRates());
             testCodecByName(codecInfo.getName());
         }
+    }
+
+    private static String getProfileLevelsAsString(MediaCodecInfo.CodecProfileLevel[] profileLevels) {
+        String[] result = new String[profileLevels.length];
+        for (int i = 0; i < profileLevels.length; ++i) {
+            MediaCodecInfo.CodecProfileLevel profileLevel = profileLevels[i];
+            result[i] = "0x" + Integer.toHexString(profileLevel.profile) + "/0x" + Integer.toHexString(profileLevel.level);
+        }
+        return Arrays.toString(result);
     }
 
     private static void testCodecByName(String codecName) {
