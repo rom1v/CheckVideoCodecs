@@ -42,6 +42,9 @@ public class Main {
             System.out.println("    color formats: " + Arrays.toString(capabilities.colorFormats));
             System.out.println("    bitrate: " + videoCapabilities.getBitrateRange());
             System.out.println("    framerate: " + videoCapabilities.getSupportedFrameRates());
+            System.out.println("    widths: " + videoCapabilities.getSupportedWidths());
+            System.out.println("    heights: " + videoCapabilities.getSupportedHeights());
+            System.out.println("    w,h alignment: " + videoCapabilities.getWidthAlignment() + "," + videoCapabilities.getHeightAlignment());
             testCodecByName(codecInfo.getName());
         }
     }
